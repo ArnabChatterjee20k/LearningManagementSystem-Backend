@@ -7,4 +7,8 @@ from system.Config import Config
 def create_api():
     app = Flask(__name__)
     app.config.from_object(Config)
+
+    # register the blueprint
+    from system.admin.resource import admin
+    app.register_blueprint(admin)
     return app
