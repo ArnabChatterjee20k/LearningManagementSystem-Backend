@@ -9,6 +9,6 @@ def create_api():
     app.config.from_object(Config)
 
     # register the blueprint
-    from system.admin.resource import admin
+    from system.admin import admin
     app.register_blueprint(admin)
     return app

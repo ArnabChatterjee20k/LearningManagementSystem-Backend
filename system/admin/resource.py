@@ -1,12 +1,11 @@
-from flask import Blueprint
-from flask_restful import Resource , Api
-
-admin = Blueprint("admin",__name__)
-
+from flask_restful import Resource , marshal_with , fields
+from flask import request
+from validator import validate
+rules = {
+    "video_name":"required|min:10",
+    "video_desp":"required|max:1"
+}
 class Admin(Resource):
-    def get(self):
-        return "Hellwo"
-
-# using blueprint instead of Flask instance
-api = Api(admin)
-api.add_resource(Admin,"/")
+    def post(self):
+        result, _, errors = validate(request.get_json(force=True), rules, return_info=True)
+        return [result,errors]
