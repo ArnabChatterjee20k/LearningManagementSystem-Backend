@@ -1,11 +1,12 @@
-from flask_restful import Resource , marshal_with , fields
-from flask import request
-from validator import validate
-rules = {
-    "video_name":"required|min:10",
-    "video_desp":"required|max:1"
-}
+from flask_restful import Resource 
+from system.admin.Parser import VideoParser
+
 class Admin(Resource):
+    Parser = VideoParser()
+    @Parser.validate
     def post(self):
-        result, _, errors = validate(request.get_json(force=True), rules, return_info=True)
-        return [result,errors]
+        try:
+            return "done"
+        except Exception as e:
+            print(e)
+            return e
