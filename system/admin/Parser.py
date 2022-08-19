@@ -2,7 +2,7 @@ from flask import abort
 import secrets
 from flask_restful import reqparse , inputs
 from functools import wraps
-from system.admin.JWT import verify_payload
+from system.utils.JWT import verify_payload
 from jwt import decode
 class VideoParser:
     def __init__(self):

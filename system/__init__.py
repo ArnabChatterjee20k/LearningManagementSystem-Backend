@@ -11,4 +11,7 @@ def create_api():
     # register the blueprint
     from system.admin import admin
     app.register_blueprint(admin)
+
+    from system.users import user
+    app.register_blueprint(user)
     return app
