@@ -22,6 +22,7 @@ def create_api():
     from system.Models.Video import Video
     from system.Models.Playlist import Playlist
     from system.Models.Likes import Likes
+    from system.Models.Comments import Comments
     
     with app.app_context():
         db.init_app(app=app)

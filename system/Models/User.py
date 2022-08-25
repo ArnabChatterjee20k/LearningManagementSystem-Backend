@@ -9,6 +9,7 @@ class User(db.Model):
     videos = db.relationship("Video",lazy="dynamic",backref = "creator")
     playlist = db.relationship("Playlist",lazy="dynamic",backref = "playlist")
     liked_videos = db.relationship("Likes",lazy="dynamic",backref = "liked_videos")
+    commented_videos = db.relationship("Comments",lazy="dynamic",backref = "commented_videos")
 
     ## we will be using password instead of _password to get the data. Made a getter then a setter
     @property
