@@ -8,3 +8,4 @@ class Video(db.Model):
     created_on = db.Column(db.DateTime, default = datetime.now())
     author = db.Column(db.Integer,db.ForeignKey("user.id",onupdate="CASCADE", ondelete="CASCADE"),nullable=False)
     playlist = db.relationship("Playlist",lazy="dynamic",backref = "playlist")
+    likes = db.relationship("Likes",lazy="dynamic",backref = "likes")

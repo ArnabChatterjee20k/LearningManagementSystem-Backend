@@ -21,6 +21,7 @@ def create_api():
     from system.Models.User import User
     from system.Models.Video import Video
     from system.Models.Playlist import Playlist
+    from system.Models.Likes import Likes
     
     with app.app_context():
         db.init_app(app=app)
