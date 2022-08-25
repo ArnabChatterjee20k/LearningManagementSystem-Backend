@@ -6,6 +6,7 @@ class User(db.Model):
     name = db.Column(db.String(30))
     email = db.Column(db.String(30))
     _password = db.Column(db.Integer)
+    videos = db.relationship("Video",lazy="dynamic",backref = "creator")
 
     ## we will be using password instead of _password to get the data. Made a getter then a setter
     @property

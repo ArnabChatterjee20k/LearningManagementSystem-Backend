@@ -8,7 +8,7 @@ from celery import Celery
 
 db = SQLAlchemy()
 mail = Mail()
-migrate = Migrate()
+migrate = Migrate(render_as_batch=True)
 
 celery = Celery(__name__,broker=Config.broker_url, result_backend=Config.result_backend)
 # We will import Resources , Api where we define them
@@ -19,10 +19,10 @@ def create_api():
 
     # registering app to the database
     from system.Models.User import User
+    from system.Models.Video import Video
     with app.app_context():
         db.init_app(app=app)
         mail.init_app(app)
-        db.create_all()
         celery.conf.update(app.config)
         migrate.init_app(app,db)
     # register the blueprint
