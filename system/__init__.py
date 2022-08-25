@@ -17,9 +17,11 @@ def create_api():
     app = Flask(__name__)
     app.config.from_object(Config)
 
-    # registering app to the database
+    # Importing models so that migrations can be applied
     from system.Models.User import User
     from system.Models.Video import Video
+    from system.Models.Playlist import Playlist
+    
     with app.app_context():
         db.init_app(app=app)
         mail.init_app(app)
