@@ -35,6 +35,9 @@ def create_api():
 
     from system.users import user
     app.register_blueprint(user , url_prefix="/users")
+
+    from system.videos import videos
+    app.register_blueprint(videos,url_prefix="/videos")
     # ctx = app.app_context()
     # ctx.push()
     return app
